@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+        {% block title %}Django's Blog - Science{% endblock %}
+      
+        <!-- Page Header-->
+        {% block header %}
+        <header class="masthead" style="background-image: url({% static 'assets/img/home-bg.jpg' %} )">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Django's Blog</h1>
+                            <span class="subheading"> Science Category
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        {% endblock %}
+        {% block contents %}
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    {% for record in science_records %}
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        <a href="{% url 'blogapp:blog_detail' record.pk %}">
+                            <h2 class="post-title">{{record.title}}</h2>
+                            <h3 class="post-subtitle">
+                                <span style="font-size: 14pt">
+                                    {{record.content|truncatechars:50}}
+                                </span>
+                                </h3>
+                        </a>
+                        <p class="post-meta">
+                            <a href="#!">Django's Blog</a>
+                            {{recorded.posted_at}}Post/Category:
+                            {{record.category}}</p>
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+
+                    {% endfor %}
+
+                    {% include "pagination.html" %}
+                    <!-- Post preview-->
+                    
+                    <!-- Divider-->
+                    
+                    <!-- Post preview-->
+                  
+                    <!-- Divider-->
+                
+                    <!-- Post preview-->
+                 
+                    <!-- Divider-->
+            
+                    <!-- Pager-->
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →
+                     </a>
+                </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://twitter.com/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.facebook.com/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://github.co.jp/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; Django's Blog 2022</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src={% static 'js/scripts.js'%}></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
